@@ -1,0 +1,161 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+*, *::before, *::after { padding: 0; margin: 0; box-sizing: inherit; font-family: inherit; }
+
+body {
+	margin: 0;
+	background-color: #666666;
+	background-image: url('../NasaImages/skynight.png');
+	color: white;
+	font-family: 'Titillium Web', sans-serif;
+}
+
+#header {
+  background-image: url(../NasaImages/nebula.jpg);	
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+  padding: 45vh 10px 40vh;
+  color: #ffccff;
+  text-align: center;
+  font-size: 90px; 
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: 0.9s;
+	z-index: 1;
+}
+
+.content {
+	margin-top:300px;
+	/* padding:15px 15px; */
+	font-size:30px
+}
+
+section {
+	padding-top: 100px;
+}
+
+/* ------Intro Section */
+
+.intro {
+	display: flex;
+}
+
+figure {
+	flex: 40%;
+	display: inline-block;
+	text-align: center;
+}
+
+.NasaDescription{
+	flex: 60%;
+	display: inline-block;
+}
+
+p {
+	font-size: 1em;
+}
+
+/* ------Achievements Section */
+
+.Achievements {
+	text-align: center;
+}
+
+.AchievementContainer {
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+	padding: 0px 50px;
+}
+
+.AchievedSection {
+	padding: 30px;
+}
+
+.goalTitle {
+	position: relative;
+	display: inline-block;
+}
+
+.goalTitle:after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	bottom: -6px;
+	background: red;
+	height: 3px;
+	left: 1px;
+}
+
+.AchievedSection p {
+	margin-top: 20px;
+	/* padding: 0px 30px; */
+	line-height: 30px;
+}
+
+.social {
+	display: inline-block;
+}
+
+/* ------News Section */
+
+.News {
+	text-align: center;
+}
+
+#NewsContainer {
+	margin-top: 50px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	/* justify-content: space-around;
+	text-align: center; */
+}
+
+.newsbox {
+	display: inline-block;
+	padding: 20px;
+	width: 400px;
+	max-width: 100%;
+	background-color: rgba(248,248,255, .3);
+	border-radius: 10px;
+	margin: 20px;
+}
+
+/* ------Footer */
+
+hr {
+	height: 4px;
+	background-color: white;
+	margin-top: 100px;
+}
+
+footer {
+	/* background-color: rgb(178, 126, 178, .3); */
+	text-align: center;
+	padding-top: 50px;
+	width: 100%;
+}
+
+
+@media screen and (max-width: 769px) {
+    .intro {   
+        flex-direction: column;
+		}
+		
+		.AchievementContainer {
+			flex-wrap: wrap;
+		}
+
+		.newsbox{
+			width: 100%;
+		}
+}

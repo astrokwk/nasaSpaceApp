@@ -1,0 +1,36 @@
+@keyframes particleAnimation
+{
+    from {
+        left: -100px;
+    }
+    to {
+        left: calc( 100% );
+    }
+}
+
+.p {
+  position:relative;
+  left: 0px;
+  top: 50px;
+  width: 2px;
+  height: 2px;
+/*  background-color:white;*/
+  animation-name: particleAnimation;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.p::before{
+  position:absolute;
+	display:block;
+  content:"";
+  width: 100px;
+  right: 1px;
+  top: 0px;
+  height: 1px;
+  background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(255,255,255,0.4) 100%); 
+}
+
+.p-2{
+  animation-duration: 4s;
+  top: 0px;
+}

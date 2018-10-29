@@ -1,0 +1,30 @@
+nav {
+	overflow: hidden;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+
+nav a {
+	float: left;
+	display: block;
+	color: orangered;
+	text-align: center;
+	padding: 20px 16px;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+nav a:hover {
+	background-color: aqua;
+}
+
+nav a:active {
+	background-color: blue;
+}
+
+.sticky {
+	position: fixed;
+	top: 0px;
+	width: 100%;
+}
