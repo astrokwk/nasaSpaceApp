@@ -139,10 +139,27 @@ hr {
 }
 
 footer {
-	/* background-color: rgb(178, 126, 178, .3); */
+	/* display: flex;
+	justify-content: space-around; */
 	text-align: center;
-	padding-top: 50px;
+	padding-top: 30px;
 	width: 100%;
+	font-size: 16px;
+}
+
+.socialMedia {
+	font-size: 2em;
+}
+
+.fa {
+	padding: 20px;
+	color: white;
+	-webkit-transition: .2s;
+}
+
+.fa:hover {
+	color: #A6121F;
+	text-shadow: 0 0 3px #8B3038;
 }
 
 
