@@ -29,6 +29,10 @@ nav a:active {
 	width: 100%;
 }
 
+.x-icon {
+	display: none;
+}
+
 .icon {
 	display: none;
 	padding: 0px;
@@ -36,11 +40,29 @@ nav a:active {
 
 
 @media screen and (max-width: 769px) {
-	nav a {
-		display: none;
+	.sidenav {
+		background-color: yellow;
+		width: 0px;
+		height: 100%;
+		left: 0;
+		top: 0;
+		position: fixed;
+		overflow-x:hidden;
+		transition: 0.5s;
+		z-index: 2;
+	}
+
+	.sidenav a {
+		width: 100%;
+		transition: 0.3s;
+	}
+
+	.x-icon {
+		display: block;
 	}
 
 	.icon {
 		display: block;
 	}
+	
 }

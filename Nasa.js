@@ -5,7 +5,7 @@ var header = document.getElementById('header');
 function scrollFunction() {
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
         header.style.fontSize = "30px";
-			header.style.padding = "20px 10px 50px";
+			header.style.padding = "20px 10px 40px";
     } else {
         header.style.fontSize = "90px";
 			header.style.padding = "45vh 10px 40vh";
@@ -20,6 +20,14 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 	header.style.padding = "20px 10px 10px";
  } else {
 	window.onscroll = function() {scrollFunction()};
+ }
+
+ function openNav() {
+	 document.getElementById('sidenav').style.width = "250px";
+ }
+
+ function closeNav() {
+	 document.getElementById('sidenav').style.width = "0";
  }
 
 
@@ -44,12 +52,12 @@ xhr.onload = function() {
 		
 		for (var i = 0; i < myObj.articles.length; i++) {
 			var str = myObj.articles[i].title;
-			var arr = ['NASA', "Nasa's", 'Milky', 'Space', 'Mars'];
+			var arr = ["NASA's", "Weird", "Space", "Mars", "Galaxies", "Hubble"];
 			// console.log(myObj.articles[i].title);
 			function contains (target, pattern){
 				var value = 0;
 				pattern.forEach(function(word){
-					value = value + target.includes(word)
+					value = value + target.includes(word);
 				});
 				return (value === 1);
 

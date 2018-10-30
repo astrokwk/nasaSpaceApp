@@ -15,7 +15,7 @@
 		<link rel="stylesheet" href="CSS/style.css">
 		
 		<link rel="stylesheet" href="CSS/navbar.css">
-		<link rel="stylesheet" href="CSS/widget.css">
+		<link rel="stylesheet" href="CSS/shootingstar.css">
 		<link rel="stylesheet" href="CSS/img.css">
 	</head>
 	<body>
@@ -24,12 +24,15 @@
 				NASA
 					
 			<nav id="navbar">
-				<a class="icon" id="menu-icon" href="javascript:void(0)"><i class="fa fa-bars" style="color:white;"></i></a>
+				<a class="icon" id="menu-icon" href="javascript:void(0)" onclick="openNav()"><i class="fa fa-bars" style="color:white;"></i></a>
+				<div class="sidenav" id="sidenav">
+				<a class="x-icon" href="javascript:void(0)"><i class="fa fa-times" onclick="closeNav()" style="color:white; padding: 0px;"></i></a>
 				<a href="#">Home</a>
-				<a href="#">Image of the Day</a>
+				<a href="https://github.com/astrokwk">Image of the Day</a>
 				<a href="#">Mars Rover</a>
 				<a href="#">Asteroid</a>
 				<a href="#">Exoplanet</a>
+				</div>
 			</nav>
 		</header>
 
@@ -43,7 +46,7 @@
 			
 			<section class="Achievements">
 				<h2>Few of the Biggest Achievements</h2>
-				<div class="p p-2"></div>
+				<div class="star star-2"></div>
 				<div class="AchievementContainer">
 					<div class="AchievedSection">
 						<img src="./NasaImages/apollo.jpg" alt="Astronaunt on Moon"><br/>
@@ -64,7 +67,8 @@
 			</section>
 			
 			<section class="News">
-					<h2>News and Update</h2>
+				<h2>News and Update</h2>
+				<div class="star star-3"></div>
 				<div id="NewsContainer">
 						<div class="social">
 								<a class="twitter-timeline" data-width="400" data-height="450" data-theme="dark" data-link-color="#2B7BB9" href="https://twitter.com/NASA?				ref_src=twsrc%5Etfw">Tweets by NASA</a> 
