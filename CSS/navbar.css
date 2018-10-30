@@ -28,3 +28,19 @@ nav a:active {
 	top: 0px;
 	width: 100%;
 }
+
+.icon {
+	display: none;
+	padding: 0px;
+}
+
+
+@media screen and (max-width: 769px) {
+	nav a {
+		display: none;
+	}
+
+	.icon {
+		display: block;
+	}
+}
