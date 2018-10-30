@@ -1,4 +1,4 @@
-window.onscroll = function() {scrollFunction()};
+// window.onscroll = function() {scrollFunction()};
 
 var header = document.getElementById('header');
 
@@ -13,6 +13,14 @@ function scrollFunction() {
 }
 
 
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	// some code..
+	console.log('mom');
+	header.style.fontSize = "30px";
+	header.style.padding = "20px 10px 50px";
+ } else {
+	window.onscroll = function() {scrollFunction()};
+ }
 
 
 
