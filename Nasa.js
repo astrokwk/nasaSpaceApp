@@ -17,7 +17,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 	// some code..
 	console.log('mom');
 	header.style.fontSize = "30px";
-	header.style.padding = "20px 10px 50px";
+	header.style.padding = "20px 10px 10px";
  } else {
 	window.onscroll = function() {scrollFunction()};
  }
