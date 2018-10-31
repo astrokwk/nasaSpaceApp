@@ -74,12 +74,18 @@ xhr.onload = function() {
 				console.log(myObj.articles[i].title);
 				var newsbox = document.createElement('div');
 				var newsimage = document.createElement('img');
+				var newslink = document.createElement('a');
 
 				newsbox.setAttribute('class','newsbox');
 				newsbox.setAttribute('id', 'newsboxid');
-				// newbox.style.backgroundImage = "url(" + myObj.articles[i].urlToImage + ")";
 
-				var newsTitle = document.createElement('h4');
+				newslink.setAttribute('class', 'newslink');
+				newslink.setAttribute('href', myObj.articles[i].url);
+				newslink.setAttribute('target', "_blank");
+				newslink.innerHTML = "Read More>>";
+				// newsbox.style.backgroundImage = "url(" + myObj.articles[i].urlToImage + ")";
+
+				var newsTitle = document.createElement('h5');
 				// newsbox.appendChild(newsTitle);
 
 				newsimage.setAttribute('src', myObj.articles[i].urlToImage);
@@ -87,7 +93,10 @@ xhr.onload = function() {
 				newsTitle.innerHTML = myObj.articles[i].title;
 				document.getElementById('NewsContainer').appendChild(newsbox);
 				newsbox.appendChild(newsimage);
+				// newsbox.appendChild(newslink);
 				newsbox.appendChild(newsTitle);
+				// newsbox.appendChild(newslink);
+				newsTitle.appendChild(newslink);
 				// console.log(myObj.articles[i].description);
 			// }
 			// document.getElementById('newbie').innerHTML = myObj.articles[3].author;
