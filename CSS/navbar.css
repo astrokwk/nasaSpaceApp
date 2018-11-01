@@ -43,7 +43,7 @@ nav a:active {
 
 @media screen and (max-width: 769px) {
 	.sidenav {
-		background-color: yellow;
+		background-color: black;
 		width: 0px;
 		height: 100%;
 		left: 0;

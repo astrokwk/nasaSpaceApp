@@ -23,7 +23,7 @@
 	height: auto;
 } */
 
-@media screen and (max-width: 412px) {
+@media screen and (max-width: 600px) {
 	.NasaLogo img {
 		width: 100%;
 		height: 100%;

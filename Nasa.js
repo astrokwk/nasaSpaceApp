@@ -35,6 +35,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 
  function closeNav() {
 	 document.getElementById('sidenav').style.width = "0";
+	 console.log('Chicken');
  }
 
 

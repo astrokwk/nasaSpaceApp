@@ -35,7 +35,7 @@ body {
 	background-image: url('../NasaImages/skynight.png');
 	color: white;
 	font-family: 'Titillium Web', sans-serif;
-	overflow-x: hidden;
+	overflow-x: hidden !important;
 }
 
 #header {
@@ -45,7 +45,7 @@ body {
 	background-size: cover;
 	background-position: center;
   padding: 45vh 10px 40vh;
-	color: #1E549C;
+	color: #2a84fc;
   text-align: center;
   font-size: 90px; 
   font-weight: bold;
