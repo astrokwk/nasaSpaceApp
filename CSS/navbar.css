@@ -16,20 +16,11 @@ nav a {
 	font-weight: 300;
 }
 
-nav a:hover {
+nav a:hover,
+nav a:active {
 	background-color: rgba(255,255,255, .2);
 	
 }
-
-nav a:active {
-	background-color: blue;
-}
-
-/* .sticky {
-	position: fixed;
-	top: 0px;
-	width: 100%;
-} */
 
 .x-icon {
 	display: none;
@@ -39,7 +30,6 @@ nav a:active {
 	display: none;
 	padding: 0px;
 }
-
 
 @media screen and (max-width: 769px) {
 	.sidenav {
@@ -66,5 +56,4 @@ nav a:active {
 	.icon {
 		display: block;
 	}
-	
 }
