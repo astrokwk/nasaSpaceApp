@@ -15,7 +15,7 @@ html {
 	position: fixed;
 	display: block;
 	/* opacity: 0.7; */
-	background-color: #fff;
+	background-color: white;
 	z-index: 99;
 	text-align: center;
 }
@@ -126,12 +126,23 @@ p {
 
 .social {
 	display: inline-block;
+	margin: 0px 20px 20px;
 }
 
 /* ------News Section */
 
 .News {
 	text-align: center;
+	transition: all 1s;
+}
+
+.hide {
+  opacity: 0;
+  width: 0px;
+}
+.show {
+  opacity: 1;
+  width: 100%;
 }
 
 #NewsContainer {
