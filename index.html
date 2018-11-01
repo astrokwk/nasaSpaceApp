@@ -19,6 +19,9 @@
 		<link rel="stylesheet" href="CSS/img.css">
 	</head>
 	<body>
+			<div id="loading">
+					<img id="loading-image" src="NasaImages/animate.gif" alt="Loading..." />
+				</div>
 		
 		<header id="header">
 				NASA
@@ -89,7 +92,9 @@
 			</footer>
 		</div>
 	
-		<script src="Nasa.js" async></script>
+		<script src="Nasa.js" async>
+		document.getElementById("hideAll").style.display = "block";
+		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</body>
 </html>

@@ -1,4 +1,11 @@
 // window.onscroll = function() {scrollFunction()};
+// $(window).load(function() {
+// 	$('#loading').hide();
+// });
+
+window.onload= function() {
+	document.getElementById('loading').style.display = "none";
+}
 
 var header = document.getElementById('header');
 
