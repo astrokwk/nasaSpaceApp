@@ -8,26 +8,28 @@ nav {
 nav a {
 	float: left;
 	display: block;
-	color: orangered;
+	color: white;
 	text-align: center;
 	padding: 20px 16px;
 	text-decoration: none;
 	font-size: 20px;
+	font-weight: 300;
 }
 
 nav a:hover {
-	background-color: aqua;
+	background-color: rgba(255,255,255, .2);
+	
 }
 
 nav a:active {
 	background-color: blue;
 }
 
-.sticky {
+/* .sticky {
 	position: fixed;
 	top: 0px;
 	width: 100%;
-}
+} */
 
 .x-icon {
 	display: none;

@@ -35,15 +35,17 @@ body {
 	background-image: url('../NasaImages/skynight.png');
 	color: white;
 	font-family: 'Titillium Web', sans-serif;
+	overflow-x: hidden;
 }
 
 #header {
-  background-image: url(../NasaImages/nebula.jpg);	
+	/* background-image: url(../NasaImages/nebula.jpg);	 */
+	background-image: url(../NasaImages/galaxy.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
   padding: 45vh 10px 40vh;
-  color: #ffccff;
+	color: #1E549C;
   text-align: center;
   font-size: 90px; 
   font-weight: bold;
@@ -52,6 +54,10 @@ body {
   width: 100%;
   transition: 0.9s;
 	z-index: 1;
+}
+
+span {
+	text-shadow: 2px 2px #FF0000;
 }
 
 .content {
@@ -184,6 +190,12 @@ h5 {
 	/* text-decoration: none; */
 }
 
+.newslink:hover,
+.newslink:active,
+.newslink:visited {
+	color: #2a84fc;
+}
+
 /* ------Footer */
 
 hr {
@@ -203,17 +215,19 @@ footer {
 
 .socialMedia {
 	font-size: 2em;
+	margin-bottom: 10px;
 }
 
 .fa {
 	padding: 20px;
 	color: white;
-	-webkit-transition: .2s;
+	transition: box-shadow .3s;
+	border-radius: 50%;
 }
 
 .fa:hover {
-	color: #A6121F;
-	text-shadow: 0 0 3px #8B3038;
+	/* color: #A6121F; */
+	box-shadow: 0 0 11px white; 
 }
 
 
