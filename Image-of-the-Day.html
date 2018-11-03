@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lange="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="description" content="">
+  <title>Image of the Day</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+  
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="icon" type="image/x-icon" href="NasaImages/planeticon.png"/>
+  <link rel="stylesheet" href="CSS/navbar.css">
+  <link rel="stylesheet" href="CSS/shootingstar.css">
+  <link rel="stylesheet" href="CSS/img.css">
+
+</head>
+<body>
+	<header id="header" style="padding: 20px 10px 40px; font-size:30px;">
+    <span>NASA</span>
+            
+    <nav id="navbar">
+      <a class="icon" id="menu-icon" href="javascript:void(0)" onclick="openNav()"><i class="fa fa-bars" style="color:white;"></i></a>
+      <div class="sidenav" id="sidenav">
+       <a class="x-icon" href="javascript:void(0)" onclick="closeNav()"><i class="fa fa-times" style="color:white; padding: 0px;"></i></a>
+       <a href="#">Home</a>
+       <a href="Image-of-the-Day.html">Image of the Day</a>
+       <a href="#">Mars Rover</a>
+       <a href="#">Asteroid</a>
+       <a href="#">Exoplanet</a>
+      </div>
+    </nav>
+  </header>
+
+  <section>
+    <figure id="picture"></figure>
+  </section>
+
+  <script src="APOD.js"></script>
+</body>
+</html>
