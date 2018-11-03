@@ -19,6 +19,13 @@ html {
 	text-align: center;
 }
 
+#loading p {
+	position: absolute;
+	color: gray;
+	top: 59%;
+	left: 47%;
+}
+
 #loading-image {
  position: absolute;
  top: 30%;
@@ -136,15 +143,6 @@ p {
 .News {
 	text-align: center;
 	transition: all 1s;
-}
-
-.hide {
-  opacity: 0;
-  width: 0px;
-}
-.show {
-  opacity: 1;
-  width: 100%;
 }
 
 #NewsContainer {
