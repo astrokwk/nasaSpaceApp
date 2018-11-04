@@ -16,7 +16,7 @@
   <link rel="icon" type="image/x-icon" href="NasaImages/planeticon.png"/>
   <link rel="stylesheet" href="CSS/navbar.css">
   <link rel="stylesheet" href="CSS/shootingstar.css">
-  <link rel="stylesheet" href="CSS/img.css">
+  <link rel="stylesheet" href="CSS/APOD.css">
 
 </head>
 <body>
@@ -27,7 +27,7 @@
       <a class="icon" id="menu-icon" href="javascript:void(0)" onclick="openNav()"><i class="fa fa-bars" style="color:white;"></i></a>
       <div class="sidenav" id="sidenav">
        <a class="x-icon" href="javascript:void(0)" onclick="closeNav()"><i class="fa fa-times" style="color:white; padding: 0px;"></i></a>
-       <a href="#">Home</a>
+       <a href="index.html">Home</a>
        <a href="Image-of-the-Day.html">Image of the Day</a>
        <a href="#">Mars Rover</a>
        <a href="#">Asteroid</a>
@@ -36,9 +36,20 @@
     </nav>
   </header>
 
+
   <section>
-    <figure id="picture"></figure>
+    <div id="picture"></div>
+    <div id="relevant">
+      <h1 id="title"></h1>
+      <h5 id="copyright"></h5>
+      <p id="date"></p>
+      <p id="caption"></p>
+    </div>
   </section>
+  
+    Date: <input type="date" name="datepicker" id="datePicker" min="1995-06-16">
+    <input type="submit" value="APOD" id="dateClick">
+ 
 
   <script src="APOD.js"></script>
 </body>

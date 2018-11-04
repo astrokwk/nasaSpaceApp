@@ -64,7 +64,7 @@ xhr.onload = function() {
 
 				newsbox.setAttribute('class','newsbox');
 				newsbox.setAttribute('id', 'newsboxid');
-
+				console.log(myObj.articles[i]);
 				newslink.setAttribute('class', 'newslink');
 				newslink.setAttribute('href', myObj.articles[i].url);
 				newslink.setAttribute('target', "_blank");
