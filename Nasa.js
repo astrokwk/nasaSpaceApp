@@ -79,8 +79,16 @@ xhr.onload = function() {
 				newsbox.appendChild(newsimage);
 				newsbox.appendChild(newsTitle);
 				newsTitle.appendChild(newslink);
+
 			}
 		}
+
+		var attributeLink = document.createElement('a');
+		attributeLink.setAttribute('href', 'https://newsapi.org');
+		attributeLink.setAttribute('target', '_blank');
+		attributeLink.setAttribute('id', 'attributeLink');
+		attributeLink.innerHTML = "Powered by News API";
+		document.getElementById('NewsContainer').appendChild(attributeLink);
 		
 	} else {
 		console.log('The Request failed');

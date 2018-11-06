@@ -188,12 +188,20 @@ h5 {
 	color: #2a84fc;
 }
 
+#attributeLink {
+	text-decoration: none;
+	color: white;
+	display: block;
+	padding: 40px;
+	font-size: 16px;
+}
+
 /* ------Footer */
 
 hr {
 	height: 4px;
 	background-color: white;
-	margin-top: 100px;
+	margin-top: 40px;
 }
 
 footer {
