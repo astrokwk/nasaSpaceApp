@@ -194,6 +194,7 @@ h5 {
 	display: block;
 	padding: 40px;
 	font-size: 16px;
+	flex-basis: 100%;
 }
 
 /* ------Footer */
