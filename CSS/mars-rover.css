@@ -1,0 +1,27 @@
+#main {
+  text-align: center;
+  margin-top: 100px;
+}
+
+#main img {
+  width: 400px;
+}
+
+table, tr, td, tbody {
+  border: solid 1px white;
+}
+
+table {
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+td{
+  padding: 10px;
+  text-align: left;
+}
+
+#sol {
+  text-align: center;
+  padding: 20px;
+}

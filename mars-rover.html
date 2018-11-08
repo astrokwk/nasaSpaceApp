@@ -16,7 +16,7 @@
   <link rel="icon" type="image/x-icon" href="NasaImages/planeticon.png"/>
   <link rel="stylesheet" href="CSS/navbar.css">
   <link rel="stylesheet" href="CSS/shootingstar.css">
-  <link rel="stylesheet" href="CSS/APOD.css">
+  <link rel="stylesheet" href="CSS/mars-rover.css">
 
 </head>
 <body>
@@ -35,6 +35,33 @@
       </div>
     </nav>
   </header>
+
+
+
+  <section id="main">
+    <h2>Mars Exploration Rover Photos</h2>
+    <img src="./NasaImages/marsRover.jpg">
+    <figcaption>Low-angle self-portrait or "selfie" of NASA's Curiosity Mars rover</figcaption>
+
+    <br>
+    <label>Mars Rover Photoset</label>
+    <select id="rover">
+      <option value="" disabled selected>Choose Rover</option>
+      <option value="Curiosity">Curiosity</option>
+      <option value="Opportunity">Opportunity</option>
+      <option value="Spirit">Spirit</option>
+    </select>
+
+
+  <table id="roverInfo"></table>
+</section>
+
+<div id="sol" style="display: none;">
+  <label id="solLabel">Pick a number between 0 and </label><br>
+  <input type="text" id="solValue" value="">
+  <input type="submit" value="Get Sol">
+</div>
+
 
 <script src="mars-rover.js"></script>
 </body>

@@ -61,11 +61,11 @@ body {
 	z-index: 1;
 }
 
-.header {
+/* .header {
 	padding: 20px 10px 40px;
-}
+} */
 
-span {
+#header span {
 	text-shadow: 2px 2px #FF0000;
 }
 
