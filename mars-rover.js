@@ -1,9 +1,16 @@
+var apiKey = '?&api_key=OFxgFiHTSBNXJIKYfAiYq0LrcjOZWrL53tBbpg3o';
+//table Rover Info
 var rover = document.getElementById('rover');
-var apiKey = 'OFxgFiHTSBNXJIKYfAiYq0LrcjOZWrL53tBbpg3o';
 var roverInfo = document.getElementById('roverInfo');
+//Input Rover for Sol
+var solValue = document.getElementById('solValue');
+var submitSol = document.getElementById('submitSol');
 
 
 var xhr = new XMLHttpRequest();
+
+
+
 
 xhr.onload = function() {
   if (xhr.status >= 200 && xhr.status < 300) {
@@ -33,9 +40,9 @@ xhr.onload = function() {
 
     var sol = document.getElementById('sol');
     var solLabel = document.getElementById('solLabel');
-    
+
     sol.style.display = "block";
-    solLabel.innerHTML = 'Pick a number between 0 and ' + myObj.photo_manifest.max_sol;
+    solLabel.innerHTML = 'Pick a number between 1 and ' + myObj.photo_manifest.max_sol;
     
 
   }  else {
@@ -53,8 +60,41 @@ rover.addEventListener('change', selection);
 function selection(select) {
   var chosenRover = rover.options[rover.selectedIndex].value;
 
-  console.log(chosenRover);
+  // console.log(chosenRover);
+  
   // xhr.open('GET', 'https://api.nasa.gov/mars-photos/api/v1/rovers/' + chosenRover + '/photos?sol=1000&api_key=' + apiKey);
-  xhr.open('GET', 'https://api.nasa.gov/mars-photos/api/v1/manifests/' + chosenRover + '?&api_key=' + apiKey);
+  xhr.open('GET', 'https://api.nasa.gov/mars-photos/api/v1/manifests/' + chosenRover + apiKey);
   xhr.send();
+
+  return chosenRover;
+}
+
+submitSol.addEventListener('click', solNumber);
+
+function solNumber() {
+  var chosenSol = solValue.value;
+
+  console.log(chosenSol);
+  solValue.value= '';
+
+  solRequest.open('GET', 'https://api.nasa.gov/mars-photos/api/v1/rovers/' + selection() + '/photos?sol=' + chosenSol + apiKey);
+  solRequest.send();
+  console.log(selection());
+}
+
+solValue.addEventListener('keyup', function(e){
+  e.preventDefault();
+  if(e.keyCode === 13){
+    submitSol.click();
+  }
+});
+
+var solRequest = new XMLHttpRequest();
+
+solRequest.onload = function(data){
+  if(solRequest.status >= 200 && solRequest.status < 300){
+    console.log(JSON.parse(solRequest.response));
+    // var solObj = JSON.parse(data);
+    // console.log(solObj);
+  }
 }
