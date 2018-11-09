@@ -70,6 +70,7 @@ function selection(select) {
 }
 
 submitSol.addEventListener('click', solNumber);
+var solImages = document.getElementById('solImages');
 
 function solNumber() {
   var chosenSol = solValue.value;
@@ -80,6 +81,10 @@ function solNumber() {
   solRequest.open('GET', 'https://api.nasa.gov/mars-photos/api/v1/rovers/' + selection() + '/photos?sol=' + chosenSol + apiKey);
   solRequest.send();
   console.log(selection());
+
+  while(solImages.firstChild){
+    solImages.removeChild(solImages.firstChild);
+  }
 }
 
 solValue.addEventListener('keyup', function(e){
@@ -94,7 +99,16 @@ var solRequest = new XMLHttpRequest();
 solRequest.onload = function(data){
   if(solRequest.status >= 200 && solRequest.status < 300){
     console.log(JSON.parse(solRequest.response));
+    var solObj = JSON.parse(solRequest.response);
     // var solObj = JSON.parse(data);
     // console.log(solObj);
+    for(var j = 0; j < solObj.photos.length; j++){
+      console.log(solObj.photos[j]);
+      console.log(solObj.photos[j].img_src);
+      var solImg = document.createElement('img');
+
+      solImg.setAttribute('src', solObj.photos[j].img_src);
+      document.getElementById('solImages').appendChild(solImg);
+    }
   }
 }

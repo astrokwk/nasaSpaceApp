@@ -25,3 +25,23 @@ td{
   text-align: center;
   padding: 20px;
 }
+
+#solImages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+  text-align: center;
+}
+
+#solImages img {
+  width: 150px;
+  height: 170px;
+  margin: 20px;
+  transition: box-shadow .3s;
+  cursor: zoom-in;
+}
+
+#solImages img:hover {
+  box-shadow: 0 0 21px white; 
+}
