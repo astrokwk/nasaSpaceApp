@@ -220,10 +220,7 @@ footer {
 .fa {
 	padding: 20px;
 	color: white;
-<<<<<<< HEAD
-	transition: box-shadow .4s;
-=======
->>>>>>> 8960259bc8d2ee1ec50a86889766ed363005fc36
+	transition: box-shadow .5s;
 	border-radius: 50%;
 }
 
