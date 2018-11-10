@@ -7,6 +7,15 @@ var solValue = document.getElementById('solValue');
 var submitSol = document.getElementById('submitSol');
 
 
+function loading(){
+  document.getElementById('loader').style.display = "block";
+}
+
+function stopLoading(){
+  document.getElementById('loader').style.display = "none";
+}
+
+
 var xhr = new XMLHttpRequest();
 
 
@@ -54,7 +63,7 @@ xhr.onload = function() {
 
 // xhr.open("GET", "https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?sol=1000&api_key=" + apiKey);
 // xhr.send();
-
+// var solImages = document.getElementById('solImages');
 rover.addEventListener('change', selection);
 
 function selection(select) {
@@ -65,14 +74,16 @@ function selection(select) {
   // xhr.open('GET', 'https://api.nasa.gov/mars-photos/api/v1/rovers/' + chosenRover + '/photos?sol=1000&api_key=' + apiKey);
   xhr.open('GET', 'https://api.nasa.gov/mars-photos/api/v1/manifests/' + chosenRover + apiKey);
   xhr.send();
-
+  solImages.innerHTML = '';
   return chosenRover;
+  
 }
 
 submitSol.addEventListener('click', solNumber);
 var solImages = document.getElementById('solImages');
 
 function solNumber() {
+  loading();
   var chosenSol = solValue.value;
 
   console.log(chosenSol);
@@ -80,6 +91,7 @@ function solNumber() {
 
   solRequest.open('GET', 'https://api.nasa.gov/mars-photos/api/v1/rovers/' + selection() + '/photos?sol=' + chosenSol + apiKey);
   solRequest.send();
+  
   console.log(selection());
 
   while(solImages.firstChild){
@@ -94,10 +106,13 @@ solValue.addEventListener('keyup', function(e){
   }
 });
 
+var modalContent = document.getElementById('modal-content');
+
 var solRequest = new XMLHttpRequest();
 
 solRequest.onload = function(data){
-  if(solRequest.status >= 200 && solRequest.status < 300){
+  if(solRequest.status >= 200 && solRequest.status < 300 && solRequest.readyState == 4){
+    stopLoading();
     console.log(JSON.parse(solRequest.response));
     var solObj = JSON.parse(solRequest.response);
     // var solObj = JSON.parse(data);
@@ -109,6 +124,18 @@ solRequest.onload = function(data){
 
       solImg.setAttribute('src', solObj.photos[j].img_src);
       document.getElementById('solImages').appendChild(solImg);
+
     }
+
+    // solImg.addEventListener('click', function(){
+    //   var photoEarthDate = document.createElement('p');
+    //   photoEarthDate.innerHTML = solObj.photos.earth_date;
+
+    //   modalContent.appendChild(photoEarthDate);
+    //   console.log('meow')
+
+    // })
+
+    // stopLoading();
   }
 }
