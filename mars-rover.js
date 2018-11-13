@@ -106,7 +106,6 @@ solValue.addEventListener('keyup', function(e){
   }
 });
 
-var modalContent = document.getElementById('modal-content');
 
 var solRequest = new XMLHttpRequest();
 
