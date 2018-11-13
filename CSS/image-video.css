@@ -3,6 +3,19 @@
   text-align: center;
 }
 
-.submit-library {
-  background-image: url(..NasaImages/telescope.png);
+.search-choice {
+  margin: 10px;
+  background-color: blue;
+  display: inline-block;
+}
+
+#submit-library {
+  background-image: url(../NasaImages/telescope.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px;
+  /* height: 100px;
+  width: 100px; */
+  background-color: #0b3d91;
+  border: 1px solid #0b3d91;
 }
