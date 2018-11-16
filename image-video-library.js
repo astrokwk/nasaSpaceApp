@@ -20,10 +20,14 @@ function libraryRequest() {
 
   console.log(searchMedia);
     xhr.open('GET', searchMedia);
-  xhr.send();
+    xhr.send();
 
+  searchValue.value = '';
   // xhr.open('GET', 'https://images-api.nasa.gov/search?q=' + searchWord);
   // xhr.send();
+  while(collectionContainer.firstChild){
+    collectionContainer.removeChild(collectionContainer.firstChild);
+  }
 }
 
 var xhr = new XMLHttpRequest();
