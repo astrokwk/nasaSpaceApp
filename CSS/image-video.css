@@ -25,6 +25,11 @@ video {
   height: 150px;
 }
 
+audio {
+  width: 200px;
+  height: 150px;
+}
+
 #collection-container img {
   width: 200px;
   height: 150px;
