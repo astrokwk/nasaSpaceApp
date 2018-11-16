@@ -8,8 +8,22 @@ function libraryRequest() {
   console.log('meow');
   var searchWord = searchValue.value;
 
-  xhr.open('GET', 'https://images-api.nasa.gov/search?q=' + searchWord);
+  var searchUrl = 'https://images-api.nasa.gov/search?q=' + searchWord;
+
+  var checkedList = [];
+  var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+
+  for (var v = 0; v < checkboxes.length; v++) {
+  checkedList.push(checkboxes[v].value);
+  var searchMedia = searchUrl + "&media_type=" + checkedList.toString();
+  }
+
+  console.log(searchMedia);
+    xhr.open('GET', searchMedia);
   xhr.send();
+
+  // xhr.open('GET', 'https://images-api.nasa.gov/search?q=' + searchWord);
+  // xhr.send();
 }
 
 var xhr = new XMLHttpRequest();
