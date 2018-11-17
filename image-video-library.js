@@ -36,6 +36,7 @@ xhr.onload = function() {
     var myObj = JSON.parse(this.response);
     // console.log(myObj);
     var collectionItems = myObj.collection.items;
+    console.log(collectionItems);
     var navigationLinks =myObj.collection.links;
 
     next.addEventListener('click', function(){
@@ -72,6 +73,7 @@ xhr.onload = function() {
         function loadItems(k){
              
           var mediaType = itemsData[m].media_type;
+          var mediaAlt = itemsData[m].title;
            
           getItems[k] = new XMLHttpRequest();
               
@@ -105,6 +107,7 @@ xhr.onload = function() {
                     } else if (mediaType === "image"){
                         var itemsImage = document.createElement('img');
                         itemsImage.setAttribute('src', './NasaImages/loader.gif');
+                        itemsImage.setAttribute('alt', mediaAlt);
                         itemsImage.setAttribute('onerror', "this.style.display='none'");
 
                         var allimages = document.getElementsByTagName('img');
