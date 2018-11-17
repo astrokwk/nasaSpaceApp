@@ -4,6 +4,9 @@ var collectionContainer = document.getElementById('collection-container');
 submitLibrary.addEventListener('click', libraryRequest);
 var searchValue = document.getElementById('searchValue');
 
+var next = document.getElementById('next');
+var previous = document.getElementById('previous');
+
 function libraryRequest() {
   console.log('meow');
   var searchWord = searchValue.value;
@@ -37,7 +40,51 @@ xhr.onload = function() {
     var myObj = JSON.parse(this.response);
     console.log(myObj);
     var collectionItems = myObj.collection.items;
+    var navigationLinks =myObj.collection.links;
 
+    next.addEventListener('click', function(){
+      console.log('poop');
+      while(collectionContainer.firstChild){
+        collectionContainer.removeChild(collectionContainer.firstChild);
+      }
+      for(var p in navigationLinks) {
+        if(navigationLinks[p].prompt ==="Next") {
+        xhr.open('GET', navigationLinks[p].href);
+        xhr.send();
+        }
+      }
+    });
+
+
+    previous.addEventListener('click', function() {
+      console.log('pee');
+      while(collectionContainer.firstChild) {
+        collectionContainer.removeChild(collectionContainer.firstChild);
+      }
+      for(p in navigationLinks) {
+        if(navigationLinks[p].prompt ==="Previous") {
+          xhr.open('GET', navigationLinks[p].href);
+          xhr.send();
+        }
+      }
+    });
+
+
+
+
+//     var poop = new XMLHttpRequest();
+
+// poop.onload = function() {
+//   if(poop.status>=200 && poop.status < 300){
+//     console.log(JSON.parse(poop.response));
+//     loadItems(poop.response.collection);
+//   }
+// }
+
+    // for(var p in meme) {
+    //   return meme[p].href;
+    // }
+  
 
     var getItems = [], k;
     for(var k = 0; k < collectionItems.length; k++){ 
@@ -98,3 +145,14 @@ xhr.onload = function() {
     console.log('the Request failed');
   }
 }
+
+// document.getElementById('next').addEventListener('click', function(){
+
+// });
+// var poop = new XMLHttpRequest();
+
+// poop.onload = function() {
+//   if(poop.status<=200 && poop.status > 300){
+//     console.log(JSON.parse(poop.response));
+//   }
+// }
