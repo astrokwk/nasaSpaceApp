@@ -7,6 +7,13 @@ var previous = document.getElementById('previous');
 //search button click
 submitLibrary.addEventListener('click', libraryRequest);
 
+searchValue.addEventListener('keyup', function(e){
+  e.preventDefault();
+  if(e.keyCode === 13){
+    submitLibrary.click();
+  }
+});
+
 function libraryRequest() {
   var searchWord = searchValue.value;
   var searchUrl = 'https://images-api.nasa.gov/search?q=' + searchWord;
