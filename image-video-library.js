@@ -18,6 +18,7 @@ searchValue.addEventListener('keyup', function(e){
 
 function libraryRequest() {
   var searchWord = searchValue.value;
+  if(searchWord !== '') {
   var searchUrl = 'https://images-api.nasa.gov/search?q=' + searchWord;
 
   var checkedList = [];
@@ -35,6 +36,9 @@ function libraryRequest() {
   while(collectionContainer.firstChild){
     collectionContainer.removeChild(collectionContainer.firstChild);
   }
+  } else {
+    collectionContainer.innerHTML = "Enter Something";
+  }
 }
 
 var xhr = new XMLHttpRequest();
@@ -42,20 +46,16 @@ var xhr = new XMLHttpRequest();
 xhr.onload = function() {
   if(xhr.status >= 200 && xhr.status < 300) {
     var myObj = JSON.parse(this.response);
-    console.log(myObj);
+    var totalHits = myObj.collection.metadata.total_hits;
     var collectionItems = myObj.collection.items;
-    console.log(collectionItems);
     var navigationLinks =myObj.collection.links;
-    console.log(navigationLinks);
 
-    page.style.display = 'block';
-    var count = 1;
-    pageNumber.innerHTML = count;
-    
+    if (totalHits === 0) {
+      collectionContainer.innerHTML = "Please enter something related to NASA";
+    }
 
     if(collectionItems.length >= 100){next.style.display = "block";}
     next.addEventListener('click', function(){
-      // page.innerHTML = "Page " + 1+=1;
       previous.style.display = "block";
       while(collectionContainer.firstChild){
         collectionContainer.removeChild(collectionContainer.firstChild);
@@ -69,7 +69,6 @@ xhr.onload = function() {
     });
 
     if(navigationLinks === undefined) {
-      console.log('monkey');
     } else if(navigationLinks[0].prompt === "Next") {
       previous.style.display = "none";
     } else if(navigationLinks[0].prompt === "Previous" && navigationLinks.length === 1) {
@@ -95,47 +94,48 @@ xhr.onload = function() {
 
       for (var m = 0; m < itemsData.length; m++) { loadItems(k) }
 
-        function loadItems(k){
-             
-          var mediaType = itemsData[m].media_type;
-          var mediaAlt = itemsData[m].title;
-          var mDescrip = itemsData[m].description;
+      function loadItems(k){          
+        var mediaType = itemsData[m].media_type;
+        var mediaAlt = itemsData[m].title;
+        var mDescrip = itemsData[m].description;
+        var mediaDate = itemsData[m].date_created;
            
-          getItems[k] = new XMLHttpRequest();
+        getItems[k] = new XMLHttpRequest();
               
-          url = collectionItems[k].href;
-          getItems[k].open("GET", url, true);
-          getItems[k].onload = function(){
-            if (getItems[k].status >= 200 && getItems[k].status < 300){
-              var itemsFirst = JSON.parse(getItems[k].response); 
-              var imageBox = document.createElement('div');
-              imageBox.setAttribute('class', 'imageBox');
-              var imageD = document.createElement('div');
-                      imageD.setAttribute('class', 'imageD');
-                      var title = document.createElement('h3');
-                      var pcheese = document.createElement('p');
+        url = collectionItems[k].href;
+        getItems[k].open("GET", url, true);
+        getItems[k].onload = function(){
+          if (getItems[k].status >= 200 && getItems[k].status < 300){
+            var itemsFirst = JSON.parse(getItems[k].response); 
+            var itemBox = document.createElement('div');
+            itemBox.setAttribute('class', 'itemBox');
+            var modal = document.createElement('div');
+            modal.setAttribute('class', 'modal');
+            var title = document.createElement('h3');
+            var date = document.createElement('p');
+            var description = document.createElement('p');
 
-                      title.innerHTML = mediaAlt;
+            title.innerHTML = mediaAlt;
+            date.innerHTML = "<b>Year: </b>" + mediaDate.substring(0,4);
 
-                      if(mDescrip && mDescrip.length >= 300){
-                        pcheese.innerHTML = mDescrip.replace(/^(.{300}[^\s]*).*/, "$1") + "...";
-                      } else {
-                        pcheese.innerHTML = mDescrip;
-                      }
+          if(mDescrip && mDescrip.length >= 200){
+            description.innerHTML = mDescrip.replace(/^(.{200}[^\s]*).*/, "$1") + "...";
+              } else {
+                description.innerHTML = mDescrip;
+                }
 
-                      imageD.appendChild(title);
-                      imageD.appendChild(pcheese);
-                      imageBox.appendChild(imageD);
+            modal.appendChild(title);
+            modal.appendChild(date);
+            modal.appendChild(description);
+            itemBox.appendChild(modal);
 
-                      imageBox.addEventListener('mouseover', function(){
-                        imageD.style.display = "block";
-                        console.log('mouse over');
-                      })
-                      imageBox.addEventListener('mouseout', function() {
-                        imageD.style.display = "none";
-                        console.log('mouse out');
-                      })
-                    }
+            itemBox.addEventListener('mouseover', function(){
+              modal.style.display = "block";
+                });
+            itemBox.addEventListener('mouseout', function() {
+              modal.style.display = "none";
+                });
+                }
  
               if(mediaType === "video") {
                 var itemsVideo = document.createElement('video');
@@ -146,8 +146,8 @@ xhr.onload = function() {
                 videoSource.setAttribute('type', 'video/mp4');
                 itemsVideo.appendChild(videoSource);
 
-                imageBox.appendChild(itemsVideo);
-                collectionContainer.appendChild(imageBox);
+                itemBox.appendChild(itemsVideo);
+                collectionContainer.appendChild(itemBox);
                   } else if (mediaType === 'audio') {
                       var itemsAudio = document.createElement('audio');
                       var audioSource = document.createElement('source');
@@ -158,54 +158,25 @@ xhr.onload = function() {
                         
                       itemsAudio.appendChild(audioSource);
 
-                      // collectionContainer.appendChild(itemsAudio);
-
-                      imageBox.appendChild(itemsAudio);
-                      collectionContainer.appendChild(imageBox);
+                      itemBox.appendChild(itemsAudio);
+                      collectionContainer.appendChild(itemBox);
                     } else if (mediaType === "image"){
-                      // var imageBox = document.createElement('div');
-                      // imageBox.setAttribute('class', 'imageBox');
                       var itemsImage = document.createElement('img');
                       itemsImage.setAttribute('src', './NasaImages/loader.gif');
                       itemsImage.setAttribute('alt', mediaAlt);
                       itemsImage.setAttribute('onerror', "this.style.display='none'");
 
                       var allimages = document.getElementsByTagName('img');
-                        // var downloadingImage = [], y;
                         
                       for(var y = 0; y < allimages.length; y++){
                         var downloadingImage = [], y;
                         downloadingImage[y] = new Image();
                         downloadingImage[y].onload = function(src) {
-                          allimages[y].src = this.src;
-                        console.log(this.src)}
+                          allimages[y].src = this.src;}
                           downloadingImage[y].src = itemsFirst.slice(-2)[0];
                         }
-                      imageBox.appendChild(itemsImage);
-                      collectionContainer.appendChild(imageBox);
-
-                      // var imageD = document.createElement('div');
-                      // imageD.setAttribute('class', 'imageD');
-                      // var pcheese = document.createElement('p');
-                      // if(mDescrip && mDescrip.length >= 300){
-                      //   pcheese.innerHTML = mDescrip.replace(/^(.{300}[^\s]*).*/, "$1") + "...";
-                      // } else {
-                      //   pcheese.innerHTML = mDescrip;
-                      // }
-                      console.log(mDescrip);
-                      // pcheese.innerHTML = cheesy;
-                      // imageD.appendChild(pcheese);
-                      //   imageBox.appendChild(imageD);
-
-                      //   imageBox.addEventListener('mouseover', function(){
-                      //     imageD.style.display = "block";
-                      //     console.log('mouse over');
-                      //   })
-                      //   imageBox.addEventListener('mouseout', function() {
-                      //     imageD.style.display = "none";
-                      //     console.log('mouse out');
-                      //   })
-                      // }
+                      itemBox.appendChild(itemsImage);
+                      collectionContainer.appendChild(itemBox);
               }
             }; getItems[k].send();
           } 

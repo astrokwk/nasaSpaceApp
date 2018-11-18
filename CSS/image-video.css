@@ -35,7 +35,7 @@ audio {
   height: 150px;
 }
 
-.imageD {
+.modal {
   background-color: white;
   color: black;
   display: none;
@@ -48,7 +48,7 @@ audio {
   border: 4px solid #fc3d21;
 }
 
-.imageBox {
+.itemBox {
   display: inline-block;
   position: relative;
 }
