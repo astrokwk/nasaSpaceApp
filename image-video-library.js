@@ -1,6 +1,8 @@
 var submitLibrary = document.getElementById('submit-library');
 var collectionContainer = document.getElementById('collection-container');
 var searchValue = document.getElementById('searchValue');
+var page = document.getElementById('page');
+var pageNumber = document.getElementById('pageNumber');
 //navigation button
 var next = document.getElementById('next');
 var previous = document.getElementById('previous');
@@ -29,7 +31,6 @@ function libraryRequest() {
   xhr.open('GET', searchMedia);
   xhr.send();
 
-  searchValue.value = '';
 
   while(collectionContainer.firstChild){
     collectionContainer.removeChild(collectionContainer.firstChild);
@@ -41,12 +42,21 @@ var xhr = new XMLHttpRequest();
 xhr.onload = function() {
   if(xhr.status >= 200 && xhr.status < 300) {
     var myObj = JSON.parse(this.response);
-    // console.log(myObj);
+    console.log(myObj);
     var collectionItems = myObj.collection.items;
     console.log(collectionItems);
     var navigationLinks =myObj.collection.links;
+    console.log(navigationLinks);
 
+    page.style.display = 'block';
+    var count = 1;
+    pageNumber.innerHTML = count;
+    
+
+    if(collectionItems.length >= 100){next.style.display = "block";}
     next.addEventListener('click', function(){
+      // page.innerHTML = "Page " + 1+=1;
+      previous.style.display = "block";
       while(collectionContainer.firstChild){
         collectionContainer.removeChild(collectionContainer.firstChild);
       }
@@ -57,6 +67,14 @@ xhr.onload = function() {
         }
       }
     });
+
+    if(navigationLinks === undefined) {
+      console.log('monkey');
+    } else if(navigationLinks[0].prompt === "Next") {
+      previous.style.display = "none";
+    } else if(navigationLinks[0].prompt === "Previous" && navigationLinks.length === 1) {
+      next.style.display = "none";
+    }
 
     previous.addEventListener('click', function() {
       while(collectionContainer.firstChild) {
@@ -81,6 +99,7 @@ xhr.onload = function() {
              
           var mediaType = itemsData[m].media_type;
           var mediaAlt = itemsData[m].title;
+          var mDescrip = itemsData[m].description;
            
           getItems[k] = new XMLHttpRequest();
               
@@ -89,6 +108,34 @@ xhr.onload = function() {
           getItems[k].onload = function(){
             if (getItems[k].status >= 200 && getItems[k].status < 300){
               var itemsFirst = JSON.parse(getItems[k].response); 
+              var imageBox = document.createElement('div');
+              imageBox.setAttribute('class', 'imageBox');
+              var imageD = document.createElement('div');
+                      imageD.setAttribute('class', 'imageD');
+                      var title = document.createElement('h3');
+                      var pcheese = document.createElement('p');
+
+                      title.innerHTML = mediaAlt;
+
+                      if(mDescrip && mDescrip.length >= 300){
+                        pcheese.innerHTML = mDescrip.replace(/^(.{300}[^\s]*).*/, "$1") + "...";
+                      } else {
+                        pcheese.innerHTML = mDescrip;
+                      }
+
+                      imageD.appendChild(title);
+                      imageD.appendChild(pcheese);
+                      imageBox.appendChild(imageD);
+
+                      imageBox.addEventListener('mouseover', function(){
+                        imageD.style.display = "block";
+                        console.log('mouse over');
+                      })
+                      imageBox.addEventListener('mouseout', function() {
+                        imageD.style.display = "none";
+                        console.log('mouse out');
+                      })
+                    }
  
               if(mediaType === "video") {
                 var itemsVideo = document.createElement('video');
@@ -99,7 +146,8 @@ xhr.onload = function() {
                 videoSource.setAttribute('type', 'video/mp4');
                 itemsVideo.appendChild(videoSource);
 
-                collectionContainer.appendChild(itemsVideo);
+                imageBox.appendChild(itemsVideo);
+                collectionContainer.appendChild(imageBox);
                   } else if (mediaType === 'audio') {
                       var itemsAudio = document.createElement('audio');
                       var audioSource = document.createElement('source');
@@ -110,24 +158,54 @@ xhr.onload = function() {
                         
                       itemsAudio.appendChild(audioSource);
 
-                      collectionContainer.appendChild(itemsAudio);
-                    } else if (mediaType === "image"){
-                        var itemsImage = document.createElement('img');
-                        itemsImage.setAttribute('src', './NasaImages/loader.gif');
-                        itemsImage.setAttribute('alt', mediaAlt);
-                        itemsImage.setAttribute('onerror', "this.style.display='none'");
+                      // collectionContainer.appendChild(itemsAudio);
 
-                        var allimages = document.getElementsByTagName('img');
-                        var downloadingImage = [], y;
+                      imageBox.appendChild(itemsAudio);
+                      collectionContainer.appendChild(imageBox);
+                    } else if (mediaType === "image"){
+                      // var imageBox = document.createElement('div');
+                      // imageBox.setAttribute('class', 'imageBox');
+                      var itemsImage = document.createElement('img');
+                      itemsImage.setAttribute('src', './NasaImages/loader.gif');
+                      itemsImage.setAttribute('alt', mediaAlt);
+                      itemsImage.setAttribute('onerror', "this.style.display='none'");
+
+                      var allimages = document.getElementsByTagName('img');
+                        // var downloadingImage = [], y;
                         
-                        for(var y = 0; y < allimages.length; y++){
-                          downloadingImage[y] = new Image();
-                          downloadingImage[y].onload = function() {
-                          allimages[y].src = this.src;}
-                        downloadingImage[y].src = itemsFirst.slice(-2)[0];
+                      for(var y = 0; y < allimages.length; y++){
+                        var downloadingImage = [], y;
+                        downloadingImage[y] = new Image();
+                        downloadingImage[y].onload = function(src) {
+                          allimages[y].src = this.src;
+                        console.log(this.src)}
+                          downloadingImage[y].src = itemsFirst.slice(-2)[0];
                         }
-                        collectionContainer.appendChild(itemsImage);
-                      }
+                      imageBox.appendChild(itemsImage);
+                      collectionContainer.appendChild(imageBox);
+
+                      // var imageD = document.createElement('div');
+                      // imageD.setAttribute('class', 'imageD');
+                      // var pcheese = document.createElement('p');
+                      // if(mDescrip && mDescrip.length >= 300){
+                      //   pcheese.innerHTML = mDescrip.replace(/^(.{300}[^\s]*).*/, "$1") + "...";
+                      // } else {
+                      //   pcheese.innerHTML = mDescrip;
+                      // }
+                      console.log(mDescrip);
+                      // pcheese.innerHTML = cheesy;
+                      // imageD.appendChild(pcheese);
+                      //   imageBox.appendChild(imageD);
+
+                      //   imageBox.addEventListener('mouseover', function(){
+                      //     imageD.style.display = "block";
+                      //     console.log('mouse over');
+                      //   })
+                      //   imageBox.addEventListener('mouseout', function() {
+                      //     imageD.style.display = "none";
+                      //     console.log('mouse out');
+                      //   })
+                      // }
               }
             }; getItems[k].send();
           } 

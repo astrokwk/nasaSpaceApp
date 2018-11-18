@@ -45,25 +45,23 @@
     </ul>
   </div>
 
-  <div id="filter-container">
-    <!-- <ul>
-      <li class="search-choice"><input type="checkbox" name="images" id="cat" value="" checked>Images</li>
-      <li class="search-choice"><input type="checkbox" name="videos" id="dog" value="" checked>Videos</li>
-      <li class="search-choice"><input type="checkbox" name="audio" value="" checked>Audio</li>
-    </ul> -->
+  <div id="filter-container" style="display:none;">
+    <ul>
+      <li class="sort"><input type="checkbox" name="images" value="image">Images</li>
+      <li class="sort"><input type="checkbox" name="videos" value="video">Videos</li>
+      <li class="sort"><input type="checkbox" name="audio" value="audio">Audio</li>
+    </ul>
+    <button id="update">Update</button>
   </div>
 
-  <div id="collection-container">
+  <h6 id="page" style="display:none;">Page <span id="pageNumber"></span></h6>
+  <div id="collection-container"></div>
 
-      <!-- <img id="catty" src="NasaImages/pluto.jpg" data-src="NasaImages/apollo.jpg" />
-      <img class="catty" src="NasaImages/pluto.jpg" data-src="NasaImages/apollo.jpg" />
-      <img class="catty" src="NasaImages/pluto.jpg" data-src="NasaImages/apollo.jpg" />
-      <img class="catty" src="NasaImages/pluto.jpg" data-src="NasaImages/apollo.jpg" /> -->
+  <div class="navigation">
+    <button id="previous" style="display:none;">Previous</button>
+    <button id="next" style="display:none;">Next</button>
   </div>
 
-  <button id="previous">Previous</button>
-  <button id="next">Next</button>
-  
   <script src="image-video-library.js"></script>
   </body>
 </html>
