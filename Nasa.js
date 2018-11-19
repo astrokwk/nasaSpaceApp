@@ -1,5 +1,6 @@
 window.onload= function() {
 	document.getElementById('loading').style.display = "none";
+	document.getElementById('body').style.overflow = 'auto';
 }
 
 var header = document.getElementById('header');

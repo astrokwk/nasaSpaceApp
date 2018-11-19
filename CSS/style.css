@@ -1,5 +1,6 @@
-html {
-  box-sizing: border-box;
+#body {
+	box-sizing: border-box;
+	overflow: hidden;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -17,6 +18,7 @@ html {
 	background-color: white;
 	z-index: 99;
 	text-align: center;
+  overflow-y: hidden !important;;
 }
 
 #loading p {

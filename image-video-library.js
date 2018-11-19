@@ -1,3 +1,22 @@
+var header = document.getElementById('header');
+
+
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	// some code..
+	console.log('mom');
+	header.style.fontSize = "30px";
+	header.style.padding = "20px 10px 10px";
+ }
+
+ function openNav() {
+  document.getElementById('sidenav').style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById('sidenav').style.width = "0";
+  console.log('Chicken');
+}
+
 var submitLibrary = document.getElementById('submit-library');
 var collectionContainer = document.getElementById('collection-container');
 var searchValue = document.getElementById('searchValue');

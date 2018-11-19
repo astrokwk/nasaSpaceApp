@@ -1,3 +1,23 @@
+var header = document.getElementById('header');
+
+
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	// some code..
+	console.log('mom');
+	header.style.fontSize = "30px";
+	header.style.padding = "20px 10px 10px";
+ }
+
+ function openNav() {
+  document.getElementById('sidenav').style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById('sidenav').style.width = "0";
+  console.log('Chicken');
+}
+
+
 var apiKey = 'api_key=OFxgFiHTSBNXJIKYfAiYq0LrcjOZWrL53tBbpg3o';
 
 var xhr = new XMLHttpRequest();
