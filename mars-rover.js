@@ -110,7 +110,7 @@ function solNumber() {
   console.log(chosenSol);
   solValue.value= '';
 
-  solRequest.open('GET', "https://bypasscors.herokuapp.com/api/?url=" + 'https://api.nasa.gov/mars-photos/api/v1/rovers/' + selection() + '/photos?sol=' + chosenSol + apiKey);
+  solRequest.open('GET', 'https://api.nasa.gov/mars-photos/api/v1/rovers/' + selection() + '/photos?sol=' + chosenSol + apiKey);
   solRequest.send();
   
   console.log(selection());
