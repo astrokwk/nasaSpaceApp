@@ -63,9 +63,6 @@ body {
 	z-index: 1;
 }
 
-/* .header {
-	padding: 20px 10px 40px;
-} */
 
 #header span {
 	text-shadow: 2px 2px #FF0000;
@@ -230,19 +227,22 @@ footer {
 	box-shadow: 0 0 11px white; 
 }
 
+@media screen and (max-width: 1089px) {
+	.intro {   
+		flex-direction: column;
+	}
+	.AchievementContainer {
+		flex-wrap: wrap;
+	}
+}
+
 @media screen and (max-width: 769px) {
 	.content {
 		margin-top: 100px;
 	}
-
-  .intro {   
-      flex-direction: column;
-		}
-		
-	.AchievementContainer {
-		flex-wrap: wrap;
+	p {
+		font-size: 20px;
 	}
-
 	.newsbox{
 		width: 100%;
 	}
