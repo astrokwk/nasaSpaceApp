@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="CSS/style.css">
   <link rel="icon" type="image/x-icon" href="NasaImages/planeticon.png"/>
   <link rel="stylesheet" href="CSS/navbar.css">
-  <link rel="stylesheet" href="CSS/shootingstar.css">
   <link rel="stylesheet" href="CSS/APOD.css">
 
 </head>
@@ -36,9 +35,16 @@
   </header>
 
 
-  <section>
+  <section class="APOD">
+    <h1>Astronomy Picture of the Day</h1>
     <div id="picture"></div>
+    
     <div id="relevant">
+      <div class="calendar">
+      Date: 
+      <input type="date" name="datepicker" id="datePicker" min="1995-06-16">
+      <input type="submit" value="APOD" id="dateClick">
+    </div>
       <h1 id="title"></h1>
       <h5 id="copyright"></h5>
       <p id="date"></p>
@@ -46,10 +52,6 @@
     </div>
   </section>
   
-    Date: <input type="date" name="datepicker" id="datePicker" min="1995-06-16">
-    <input type="submit" value="APOD" id="dateClick">
- 
-
   <script src="APOD.js"></script>
 </body>
 </html>

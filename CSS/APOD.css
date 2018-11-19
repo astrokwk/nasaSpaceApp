@@ -1,24 +1,39 @@
-#picture {
-  /* position: relative; */
+.APOD {
   text-align: center;
-  padding: 20px;
+  margin-top: 30px;
 }
 
-#picture img {
-  /* position: absolute; */
-  height: 600px;
-  text-align: center;
-}
+.APOD h1 { letter-spacing: 1px;}
+
+#picture, #relevant { padding: 20px;}
+
+#picture img { height: 500px;}
 
 #picture iframe {
   width: 500px;
   height: 400px;
-  text-align: center;
 }
 
-#relevant {
-  padding: 20px;
-  text-align: center;
+.calendar {
+  background-color: rgba(0,65,106, .6);
+  display: inline-block;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.calendar input {
+  border-radius: 3px;
+  border: 1px solid white;
+}
+
+input[type=submit] {
+  background-color: #336788;
+  color: white;
+  border: 1px solid #336788;
+  padding: 5px;
+  letter-spacing: 2px;
+  font-weight: 600;
 }
 
 #title {
@@ -26,20 +41,16 @@
   font-weight: bold;
 }
 
-#copyright {
+#copyright, #date {
   font-size: 20px;
   text-align: center;
-}
-
-#date {
-  font-size: 20px;
 }
 
 #caption {
   font-size: 20px;
   font-weight: 200;
   text-align: left;
-  padding: 0px 20px;
+  padding: 0px 30px 10px;
 }
 
 @media screen and (max-width: 600px) {
@@ -47,4 +58,6 @@
     width: 100%;
     height: 100%;
   }
+
+  #title { font-size: 30px;}
 }

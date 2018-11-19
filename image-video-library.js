@@ -3,7 +3,6 @@ var header = document.getElementById('header');
 
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 	// some code..
-	console.log('mom');
 	header.style.fontSize = "30px";
 	header.style.padding = "20px 10px 10px";
  }
@@ -15,6 +14,14 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 function closeNav() {
   document.getElementById('sidenav').style.width = "0";
   console.log('Chicken');
+}
+
+function loading(){
+  document.getElementById('loader').style.display = "block";
+}
+
+function stopLoading(){
+  document.getElementById('loader').style.display = "none";
 }
 
 var submitLibrary = document.getElementById('submit-library');
@@ -36,6 +43,7 @@ searchValue.addEventListener('keyup', function(e){
 });
 
 function libraryRequest() {
+  loading();
   var searchWord = searchValue.value;
   if(searchWord !== '') {
   var searchUrl = 'https://images-api.nasa.gov/search?q=' + searchWord;
@@ -64,6 +72,7 @@ var xhr = new XMLHttpRequest();
 
 xhr.onload = function() {
   if(xhr.status >= 200 && xhr.status < 300) {
+    stopLoading();
     var myObj = JSON.parse(this.response);
     var totalHits = myObj.collection.metadata.total_hits;
     var collectionItems = myObj.collection.items;
@@ -73,9 +82,10 @@ xhr.onload = function() {
       collectionContainer.innerHTML = "Please enter something related to NASA";
     }
 
-    if(collectionItems.length >= 100){next.style.display = "block";}
+    if(collectionItems.length >= 100){next.style.display = "inline-block";}
     next.addEventListener('click', function(){
-      previous.style.display = "block";
+      loading();
+      previous.style.display = "inline-block";
       while(collectionContainer.firstChild){
         collectionContainer.removeChild(collectionContainer.firstChild);
       }

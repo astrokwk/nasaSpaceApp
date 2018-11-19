@@ -34,32 +34,28 @@
     </nav>
   </header>
 
+<div class="library">
   <div id="search-container">
-    <input type="text" value="" id="searchValue">
+    <div class="searching">
+    <input type="text" value="" id="searchValue" placeholder="Search...">
     <button type="submit" id="submit-library"></button>
-
-    <ul>
-      <li class="search-choice"><input type="checkbox" name="images" value="image" checked>Images</li>
-      <li class="search-choice"><input type="checkbox" name="videos" value="video" checked>Videos</li>
-      <li class="search-choice"><input type="checkbox" name="audio" value="audio" checked>Audio</li>
-    </ul>
   </div>
 
-  <div id="filter-container" style="display:none;">
     <ul>
-      <li class="sort"><input type="checkbox" name="images" value="image">Images</li>
-      <li class="sort"><input type="checkbox" name="videos" value="video">Videos</li>
-      <li class="sort"><input type="checkbox" name="audio" value="audio">Audio</li>
+      <li class="search-choice"><input type="checkbox" name="images" value="image" checked> Images</li>
+      <li class="search-choice"><input type="checkbox" name="videos" value="video" checked> Videos</li>
+      <li class="search-choice"><input type="checkbox" name="audio" value="audio" checked> Audio</li>
     </ul>
-    <button id="update">Update</button>
   </div>
 
   <div id="collection-container"></div>
+  <div class="loader" id="loader" style="display:none;"></div>
 
   <div class="navigation">
     <button id="previous" style="display:none;">Previous</button>
     <button id="next" style="display:none;">Next</button>
   </div>
+</div>
 
   <script src="image-video-library.js"></script>
   </body>

@@ -1,9 +1,7 @@
 var header = document.getElementById('header');
 
-
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 	// some code..
-	console.log('mom');
 	header.style.fontSize = "30px";
 	header.style.padding = "20px 10px 10px";
  }
@@ -14,10 +12,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 
 function closeNav() {
   document.getElementById('sidenav').style.width = "0";
-  console.log('Chicken');
 }
-
-
 
 var apiKey = '?&api_key=OFxgFiHTSBNXJIKYfAiYq0LrcjOZWrL53tBbpg3o';
 //table Rover Info
@@ -26,7 +21,6 @@ var roverInfo = document.getElementById('roverInfo');
 //Input Rover for Sol
 var solValue = document.getElementById('solValue');
 var submitSol = document.getElementById('submitSol');
-
 
 function loading(){
   document.getElementById('loader').style.display = "block";
@@ -39,14 +33,9 @@ function stopLoading(){
 
 var xhr = new XMLHttpRequest();
 
-
-
-
 xhr.onload = function() {
   if (xhr.status >= 200 && xhr.status < 300) {
     var myObj = JSON.parse(this.response);
-    console.log(xhr.status);
-    console.log(myObj);
 
     var k = '<tbody>';
 
@@ -73,31 +62,21 @@ xhr.onload = function() {
 
     sol.style.display = "block";
     solLabel.innerHTML = 'Pick a number between 1 and ' + myObj.photo_manifest.max_sol;
-    
 
   }  else {
     console.log('The Request Failed');
   }
-
-
 }
 
-// xhr.open("GET", "https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?sol=1000&api_key=" + apiKey);
-// xhr.send();
-// var solImages = document.getElementById('solImages');
 rover.addEventListener('change', selection);
 
 function selection(select) {
   var chosenRover = rover.options[rover.selectedIndex].value;
-
-  // console.log(chosenRover);
   
-  // xhr.open('GET', 'https://api.nasa.gov/mars-photos/api/v1/rovers/' + chosenRover + '/photos?sol=1000&api_key=' + apiKey);
   xhr.open('GET', 'https://api.nasa.gov/mars-photos/api/v1/manifests/' + chosenRover + apiKey);
   xhr.send();
   solImages.innerHTML = '';
   return chosenRover;
-  
 }
 
 submitSol.addEventListener('click', solNumber);
@@ -107,14 +86,11 @@ function solNumber() {
   loading();
   var chosenSol = solValue.value;
 
-  console.log(chosenSol);
   solValue.value= '';
 
   solRequest.open('GET', 'https://api.nasa.gov/mars-photos/api/v1/rovers/' + selection() + '/photos?sol=' + chosenSol + apiKey);
   solRequest.send();
   
-  console.log(selection());
-
   while(solImages.firstChild){
     solImages.removeChild(solImages.firstChild);
   }
@@ -127,35 +103,18 @@ solValue.addEventListener('keyup', function(e){
   }
 });
 
-
 var solRequest = new XMLHttpRequest();
 
 solRequest.onload = function(data){
   if(solRequest.status >= 200 && solRequest.status < 300 && solRequest.readyState == 4){
     stopLoading();
-    console.log(JSON.parse(solRequest.response));
     var solObj = JSON.parse(solRequest.response);
-    // var solObj = JSON.parse(data);
-    // console.log(solObj);
+
     for(var j = 0; j < solObj.photos.length; j++){
-      console.log(solObj.photos[j]);
-      console.log(solObj.photos[j].img_src);
       var solImg = document.createElement('img');
 
       solImg.setAttribute('src', solObj.photos[j].img_src);
       document.getElementById('solImages').appendChild(solImg);
-
     }
-
-    // solImg.addEventListener('click', function(){
-    //   var photoEarthDate = document.createElement('p');
-    //   photoEarthDate.innerHTML = solObj.photos.earth_date;
-
-    //   modalContent.appendChild(photoEarthDate);
-    //   console.log('meow')
-
-    // })
-
-    // stopLoading();
   }
 }
