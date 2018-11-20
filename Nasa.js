@@ -39,7 +39,7 @@ var xhr = new XMLHttpRequest();
 xhr.onload = function() {
 	if(xhr.status >= 200 && xhr.status <300) {
 		var myObj = JSON.parse(this.response);
-		
+			
 		for (var i = 0; i < myObj.articles.length; i++) {
 			var str = myObj.articles[i].title;
 			var arr = ["NASA's", "Weird", "Space", "Mars", "Galaxies", "Hubble"];
@@ -67,7 +67,11 @@ xhr.onload = function() {
 
 				var newsTitle = document.createElement('h5');
 
-				newsimage.setAttribute('src', myObj.articles[i].urlToImage);
+				if (myObj.articles[i].urlToImage !== null) {
+					newsimage.setAttribute('src', myObj.articles[i].urlToImage);
+				} else {
+					newsimage.setAttribute('src', 'NasaImages/astronaunt.jpg');
+				}
 
 				newsTitle.innerHTML = myObj.articles[i].title;
 				document.getElementById('NewsContainer').appendChild(newsbox);
