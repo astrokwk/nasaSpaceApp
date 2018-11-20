@@ -65,6 +65,8 @@ function libraryRequest() {
   }
   } else {
     collectionContainer.innerHTML = "Enter Something";
+    stopLoading();
+    next.style.display = 'none';
   }
 }
 
@@ -80,6 +82,8 @@ xhr.onload = function() {
 
     if (totalHits === 0) {
       collectionContainer.innerHTML = "Please enter something related to NASA";
+      stopLoading();
+      next.style.display = 'none';
     }
 
     if(collectionItems.length >= 100){next.style.display = "inline-block";}
