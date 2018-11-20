@@ -20,6 +20,7 @@
   padding: 10px;
   border-radius: 10px;
   font-weight: 600;
+  border: 3px solid #BDCDD8;
 }
 
 .calendar input {
