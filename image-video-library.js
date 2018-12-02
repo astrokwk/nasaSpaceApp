@@ -82,7 +82,6 @@ xhr.onload = function() {
 
     if (totalHits === 0) {
       collectionContainer.innerHTML = "Please enter something related to NASA";
-      stopLoading();
       next.style.display = 'none';
     }
 
@@ -109,6 +108,7 @@ xhr.onload = function() {
     }
 
     previous.addEventListener('click', function() {
+      loading();
       while(collectionContainer.firstChild) {
         collectionContainer.removeChild(collectionContainer.firstChild);
       }
