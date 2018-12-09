@@ -15,6 +15,7 @@
 
 .roverSelect {
   background-color: rgba(92,160,133,.6);
+  border: 3px solid #C9EEDF;
   display: inline-block;
   padding: 10px;
   border-radius: 10px;
